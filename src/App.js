@@ -1,6 +1,8 @@
 import {useState} from "react"
 import Phone from "./components/Phone";
 import Filter from "./components/Filter";
+import Form from "./components/Form";
+import Input from "./components/Input";
 function App() {
 
   const [Person, setPerson] = useState([ { name: 'Arto Hellas', number: "000234567" }
@@ -40,24 +42,21 @@ else{
 
   }
 
-  const PersonToShow = Person.filter(person => person.name.toLocaleLowerCase().startsWith(filter.toLocaleLowerCase()))
+  const PersonToShow = Person.filter(person => 
+    person.name.toLocaleLowerCase().startsWith(filter.toLocaleLowerCase()))
   return (<> 
   
   <h2>Phonebook</h2>
   <Filter onChange={inputOnchange}/>
-      <form onSubmit={addPerson}>
-        <div>
-          name: <input value={newName.name} onChange={(e) => { console.log(e.target.value); setNewName({...newName, name: e.target.value}); }} />
-        </div>
-        <div>
 
-          Number: <input value={newName.number} onChange = {(e) => setNewName({...newName, number: e.target.value})}/>
-        </div>
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
-      <h2>Numbers</h2>
+
+<Form onSubmit={addPerson}> 
+<div>  Name: <Input value={newName.name} type= "text" onChange={(e) => setNewName({...newName, name: e.target.value})}/></div>  
+
+Number: <Input type= "number" value={newName.number}  onChange = {(e) => setNewName({...newName, number: e.target.value})}/>
+</Form>
+
+<h2>Numbers</h2>
       {PersonToShow.map((person) =>
       <Phone key={person.id} person={person}/>
 
