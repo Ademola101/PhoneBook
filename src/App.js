@@ -1,6 +1,6 @@
 import {useState} from "react"
 import Phone from "./components/Phone";
-
+import Filter from "./components/Filter";
 function App() {
 
   const [Person, setPerson] = useState([ { name: 'Arto Hellas', number: "000234567" }
@@ -9,7 +9,13 @@ function App() {
   
 
   const [newName, setNewName] = useState( {name: "", number:""})
-  
+
+  const [filter, setFilter] = useState("")
+
+  const inputOnchange = (e) => {
+    console.log(e.target.value);
+setFilter(e.target.value)
+  }
   const addPerson = (e) => {
     e.preventDefault()
 
@@ -30,11 +36,11 @@ else{
 
   
 
-
   }
   return (<> 
   
   <h2>Phonebook</h2>
+  <Filter onChange={inputOnchange}/>
       <form onSubmit={addPerson}>
         <div>
           name: <input value={newName.name} onChange={(e) => { console.log(e.target.value); setNewName({...newName, name: e.target.value}); }} />
