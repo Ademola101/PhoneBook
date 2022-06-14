@@ -28,6 +28,8 @@ const currentName = Person.filter((person) => person.name === personObject.name)
 
 if (currentName.length === 0) {
   setPerson(Person.concat(personObject))
+  setNewName({name: "",
+number: ""})
 }
 
 else{
@@ -37,6 +39,8 @@ else{
   
 
   }
+
+  const PersonToShow = Person.filter(person => person.name.toLocaleLowerCase().startsWith(filter.toLocaleLowerCase()))
   return (<> 
   
   <h2>Phonebook</h2>
@@ -54,7 +58,7 @@ else{
         </div>
       </form>
       <h2>Numbers</h2>
-      {Person.map((person) =>
+      {PersonToShow.map((person) =>
       <Phone key={person.id} person={person}/>
 
       )}
