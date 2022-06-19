@@ -5,16 +5,22 @@ import Form from "./components/Form";
 import Input from "./components/Input";
 import { AppStyle } from "./components/styles/App.styles";
 import { Formstyle } from "./components/styles/Form.styles";
+import axios from "axios";
+import {useEffect} from "react"
+
 function App() {
 
-  const [Person, setPerson] = useState([ { name: 'Arto Hellas', number: "000234567" }
-]) 
-    
-  
+  const [Person, setPerson] = useState([]) 
 
   const [newName, setNewName] = useState( {name: "", number:""})
 
   const [filter, setFilter] = useState("")
+
+  useEffect( () => {
+    axios.get("http://localhost:3001/phonebook").then((response) => {
+      setPerson(response.data)
+    })
+  })
 
   const inputOnchange = (e) => {
     console.log(e.target.value);
