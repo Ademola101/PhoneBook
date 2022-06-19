@@ -7,6 +7,7 @@ import { AppStyle } from "./components/styles/App.styles";
 import { Formstyle } from "./components/styles/Form.styles";
 import axios from "axios";
 import {useEffect} from "react"
+import PhoneServices from "./services/PhoneServices";
 
 function App() {
 
@@ -17,8 +18,8 @@ function App() {
   const [filter, setFilter] = useState("")
 
   useEffect( () => {
-    axios.get("http://localhost:3001/phonebook").then((response) => {
-      setPerson(response.data)
+    PhoneServices.getAll().then((initialPerson) => {
+      setPerson(initialPerson)
     })
   })
 
