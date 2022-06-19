@@ -3,6 +3,8 @@ import Phone from "./components/Phone";
 import Filter from "./components/Filter";
 import Form from "./components/Form";
 import Input from "./components/Input";
+import { AppStyle } from "./components/styles/App.styles";
+import { Formstyle } from "./components/styles/Form.styles";
 function App() {
 
   const [Person, setPerson] = useState([ { name: 'Arto Hellas', number: "000234567" }
@@ -44,17 +46,20 @@ else{
 
   const PersonToShow = Person.filter(person => 
     person.name.toLocaleLowerCase().startsWith(filter.toLocaleLowerCase()))
-  return (<> 
+
+
+
+  return (<AppStyle> 
   
   <h2>Phonebook</h2>
   <Filter onChange={inputOnchange}/>
 
 
-<Form onSubmit={addPerson}> 
+<Formstyle  as = {Form} onSubmit={addPerson}> 
 <div>  Name: <Input value={newName.name} type= "text" onChange={(e) => setNewName({...newName, name: e.target.value})}/></div>  
 
 Number: <Input type= "number" value={newName.number}  onChange = {(e) => setNewName({...newName, number: e.target.value})}/>
-</Form>
+</Formstyle>
 
 <h2>Numbers</h2>
       {PersonToShow.map((person) =>
@@ -63,7 +68,7 @@ Number: <Input type= "number" value={newName.number}  onChange = {(e) => setNewN
       )}
   
   
-  </>
+  </AppStyle>
   );
 }
 
