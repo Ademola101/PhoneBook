@@ -27,7 +27,10 @@ function App() {
   const inputOnchange = (e) => {
     console.log(e.target.value);
 setFilter(e.target.value)
-  }
+  };
+
+
+
   const addPerson = (e) => {
     e.preventDefault()
 
@@ -36,12 +39,19 @@ setFilter(e.target.value)
   name: newName.name,
   number: newName.number
 };
+
+
+
 const currentName = Person.filter((person) => person.name === personObject.name)
 
 if (currentName.length === 0) {
-  setPerson(Person.concat(personObject))
-  setNewName({name: "",
+  axios.post("http://localhost:3001/phonebook",personObject).then((response) => {
+    setPerson(Person.concat(response.data));
+    setNewName({name: "",
 number: ""})
+  })
+  
+  
 }
 
 else{
@@ -58,11 +68,11 @@ else{
 
 const Delete = (id) =>{ 
 
-  console.log(`Delete ${id} of phone`);
+  
 const phone = Person.find((person) => person.id === id);
 if (window.confirm(`Are you sure you want to delete ${phone.name}`) ) 
 {
-  axios.delete(`http://localhost:3001/phonebook/${id}`).then((response) => {
+  PhoneServices.deleteOne(id).then((response) => {
     console.log(response);
   })
   
