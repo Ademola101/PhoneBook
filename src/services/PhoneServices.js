@@ -17,10 +17,18 @@ const deleteOne = (id) => {
 const create = (personObject) => {
 const request  = axios.post(baseUrl,personObject);
 return request.then(resonse => resonse.data)
+};
+
+const update = (id, newObject) => {
+  const request = axios.put(`${baseUrl}/${id}`,newObject)
+  return request.then(response => response.data)
 }
+
+
 
 export default {
   getAll,
   deleteOne,
-  create
+  create, 
+  update
 }
