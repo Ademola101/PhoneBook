@@ -6,6 +6,10 @@ h2 {
 .Notification {
 
   font-size: large;
-  color: darkred;
+  color: green;
   padding: 10px;
+  border-color: green;
+  background-color: darkgrey;
+  border-radius:3px;
+  border-style: solid ;
 }
