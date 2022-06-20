@@ -5,15 +5,16 @@ import Form from "./components/Form";
 import Input from "./components/Input";
 import { AppStyle } from "./components/styles/App.styles";
 import { Formstyle } from "./components/styles/Form.styles";
-import axios from "axios";
+import Button from "./components/Button";
 import {useEffect} from "react"
 import PhoneServices from "./services/PhoneServices";
+import axios from "axios";
 
 function App() {
 
   const [Person, setPerson] = useState([]) 
 
-  const [newName, setNewName] = useState( {name: "", number:""})
+  const [newName, setNewName] = useState( {name: "", number:"", id: 0})
 
   const [filter, setFilter] = useState("")
 
@@ -55,6 +56,16 @@ else{
     person.name.toLocaleLowerCase().startsWith(filter.toLocaleLowerCase()))
 
 
+const Delete = (id) =>{ 
+
+  console.log(`Delete ${id} of phone`);
+const phone = Person.find((person) => person.id === id);
+axios.delete(`http://localhost:3001/phonebook/${id}`).then((response) => {
+  console.log(response);
+})
+};
+
+
 
   return (<AppStyle> 
   
@@ -70,7 +81,7 @@ Number: <Input type= "number" value={newName.number}  onChange = {(e) => setNewN
 
 <h2>Numbers</h2>
       {PersonToShow.map((person) =>
-      <Phone key={person.id} person={person}/>
+      <Phone key={person.id} person={person}> <Button Delete={() => Delete(person.id)}/> </Phone>
 
       )}
   

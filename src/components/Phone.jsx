@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Phone({person}) {
+export default function Phone({person,children}) {
   return ( <>
     <div> Name:
 
@@ -8,7 +8,7 @@ export default function Phone({person}) {
     </div>
 <div>
 Number:
-  {person.number}
+  {person.number}  {children}
 </div>
     </>
   )
