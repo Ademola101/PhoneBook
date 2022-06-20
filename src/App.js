@@ -60,9 +60,13 @@ const Delete = (id) =>{
 
   console.log(`Delete ${id} of phone`);
 const phone = Person.find((person) => person.id === id);
-axios.delete(`http://localhost:3001/phonebook/${id}`).then((response) => {
-  console.log(response);
-})
+if (window.confirm(`Are you sure you want to delete ${phone.name}`) ) 
+{
+  axios.delete(`http://localhost:3001/phonebook/${id}`).then((response) => {
+    console.log(response);
+  })
+  
+}
 };
 
 
