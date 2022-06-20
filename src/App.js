@@ -8,15 +8,16 @@ import { Formstyle } from "./components/styles/Form.styles";
 import Button from "./components/Button";
 import {useEffect} from "react"
 import PhoneServices from "./services/PhoneServices";
-import axios from "axios";
+import Notification from "./components/Notification";
 
 function App() {
 
-  const [Person, setPerson] = useState([]) 
+  const [Person, setPerson] = useState([]);
 
-  const [newName, setNewName] = useState( {name: "", number:"", id: 0})
+  const [newName, setNewName] = useState( {name: "", number:"", id: 0});
 
-  const [filter, setFilter] = useState("")
+  const [filter, setFilter] = useState("");
+  const [Notification, setNotification] = useState(null)
 
   useEffect( () => {
     PhoneServices.getAll().then((initialPerson) => {
@@ -100,6 +101,7 @@ Number: <Input type= "number" value={newName.number}  onChange = {(e) => setNewN
 </Formstyle>
 
 <h2>Numbers</h2>
+<Notification/>
       {PersonToShow.map((person) =>
       <Phone key={person.id} person={person}> <Button Delete={() => Delete(person.id)}/> </Phone>
 

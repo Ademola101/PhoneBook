@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Phone({person,children}) {
   return ( <>
-    <div> Name:
+    <div > Name:
 
 {person.name}
     </div>
