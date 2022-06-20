@@ -12,9 +12,15 @@ const getAll = () => {
 
 const deleteOne = (id) => {
   return (axios.delete(`${baseUrl}/${id}`))
+};
+
+const create = (personObject) => {
+const request  = axios.post(baseUrl,personObject);
+return request.then(resonse => resonse.data)
 }
 
 export default {
   getAll,
-  deleteOne
+  deleteOne,
+  create
 }

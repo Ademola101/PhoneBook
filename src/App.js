@@ -45,8 +45,8 @@ setFilter(e.target.value)
 const currentName = Person.filter((person) => person.name === personObject.name)
 
 if (currentName.length === 0) {
-  axios.post("http://localhost:3001/phonebook",personObject).then((response) => {
-    setPerson(Person.concat(response.data));
+  PhoneServices.create(personObject).then((returnObject) => {
+    setPerson(Person.concat(returnObject));
     setNewName({name: "",
 number: ""})
   })
