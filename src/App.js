@@ -17,7 +17,7 @@ function App() {
   const [newName, setNewName] = useState( {name: "", number:"", id: 0});
 
   const [filter, setFilter] = useState("");
-  const [Notification, setNotification] = useState(null)
+  const [message, setMessage] = useState(null)
 
   useEffect( () => {
     PhoneServices.getAll().then((initialPerson) => {
@@ -48,6 +48,11 @@ console.log(currentName);
 if (currentName.length === 0) {
   PhoneServices.create(personObject).then((returnObject) => {
     setPerson(Person.concat(returnObject));
+    setMessage(`${returnObject.name} successfully added to the phonebook`)
+    setTimeout(() => {
+      setMessage(null)
+    },5000)
+    
     setNewName({name: "",
 number: ""})
   })
@@ -81,7 +86,12 @@ if (window.confirm(`Are you sure you want to delete ${phone.name}`) )
 {
   PhoneServices.deleteOne(id).then((response) => {
     console.log(response);
-  })
+  });
+  setMessage(`${phone.name} successfully deleted`);
+
+  setTimeout(() => {
+    setMessage(null)
+  },5000)
   
 }
 };
@@ -91,6 +101,7 @@ if (window.confirm(`Are you sure you want to delete ${phone.name}`) )
   return (<AppStyle> 
   
   <h2>Phonebook</h2>
+  <Notification message={message}/>
   <Filter onChange={inputOnchange}/>
 
 
@@ -101,7 +112,7 @@ Number: <Input type= "number" value={newName.number}  onChange = {(e) => setNewN
 </Formstyle>
 
 <h2>Numbers</h2>
-<Notification/>
+
       {PersonToShow.map((person) =>
       <Phone key={person.id} person={person}> <Button Delete={() => Delete(person.id)}/> </Phone>
 

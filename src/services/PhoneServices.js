@@ -25,10 +25,11 @@ const update = (id, newObject) => {
 }
 
 
-
-export default {
-  getAll,
+const PhoneServices = {
+  create,
+  update,
   deleteOne,
-  create, 
-  update
-}
+  getAll
+};
+
+export default PhoneServices
