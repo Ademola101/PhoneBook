@@ -66,6 +66,9 @@ else {
       const updatedPersons = Person.map(person => person.id !== returnedPerson.id ? person : returnedPerson);
       setPerson(updatedPersons);
       
+    }).catch(error => {
+      setMessage(`${personObject.name} has already been deleted`);
+      setTimeout(() => setMessage(null),5000)
     })
   }
 }
