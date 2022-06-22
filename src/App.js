@@ -88,9 +88,11 @@ const phone = Person.find((person) => person.id === id);
 if (window.confirm(`Are you sure you want to delete ${phone.name}`) ) 
 {
   PhoneServices.deleteOne(id).then((response) => {
-    console.log(response);
+    const updatedPersons = Person.filter(person => person.id !== phone.id);
+    setPerson(updatedPersons)
+    setMessage(`${phone.name} successfully deleted`);
   });
-  setMessage(`${phone.name} successfully deleted`);
+  
 
   setTimeout(() => {
     setMessage(null)
