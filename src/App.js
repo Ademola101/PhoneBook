@@ -77,7 +77,7 @@ else {
 
   }
 
-  const PersonToShow = Person.filter(person => 
+  const PersonToShow = Person?.filter(person => 
     person.name.toLocaleLowerCase().startsWith(filterSearch.toLocaleLowerCase()))
 
 
