@@ -12,7 +12,7 @@ import Notification from "./components/Notification";
 
 function App() {
 
-  const [Person, setPerson] = useState([]);
+  const [Person, setPerson] = useState(null);
 
   const [newName, setNewName] = useState( {name: "", number:"", id: 0});
 
@@ -116,7 +116,7 @@ Number: <Input type= "number" value={newName.number}  onChange = {(e) => setNewN
 
 <h2>Numbers</h2>
 
-      {PersonToShow.map((person) =>
+      {PersonToShow?.map((person) =>
       <Phone key={person.id} person={person}> <Button Delete={() => Delete(person.id)}/> </Phone>
 
       )}
