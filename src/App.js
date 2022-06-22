@@ -16,18 +16,18 @@ function App() {
 
   const [newName, setNewName] = useState( {name: "", number:"", id: 0});
 
-  const [filter, setFilter] = useState("");
+  const [filterSearch, setFilterSearch] = useState("");
   const [message, setMessage] = useState(null)
 
   useEffect( () => {
     PhoneServices.getAll().then((initialPerson) => {
       setPerson(initialPerson)
     })
-  })
+  }, [])
 
   const inputOnchange = (e) => {
     console.log(e.target.value);
-setFilter(e.target.value)
+setFilterSearch(e.target.value)
   };
 
 
@@ -78,7 +78,7 @@ else {
   }
 
   const PersonToShow = Person.filter(person => 
-    person.name.toLocaleLowerCase().startsWith(filter.toLocaleLowerCase()))
+    person.name.toLocaleLowerCase().startsWith(filterSearch.toLocaleLowerCase()))
 
 
 const Delete = (id) =>{ 
