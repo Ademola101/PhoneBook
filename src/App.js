@@ -43,7 +43,7 @@ setFilterSearch(e.target.value)
 
 
 
-const currentName = Person.filter((person) => person.name === personObject.name)
+const currentName = Person?.filter((person) => person.name === personObject.name)
 console.log(currentName);
 if (currentName.length === 0) {
   PhoneServices.create(personObject).then((returnObject) => {
@@ -55,13 +55,20 @@ if (currentName.length === 0) {
     
     setNewName({name: "",
 number: ""})
-  })
+  }).catch(error => {
+    console.log(error)
+    setMessage(error.response.data.error)
+    setTimeout(() => {
+      setMessage(null)
+    }, 5000)
+    }
+    )
   
   
 }
 
 else {
-  if(window.confirm(`${currentName.name} is already added to the Phone book. Replace the old number with the new one?`)){
+  if(window.confirm(`${personObject.name} is already added to the Phone book. Replace the old number with the new one?`)){
     PhoneServices.update(currentName[0].id, personObject).then(returnedPerson => {
       const updatedPersons = Person.map(person => person.id !== returnedPerson.id ? person : returnedPerson);
       setPerson(updatedPersons);
