@@ -3,13 +3,7 @@ h2 {
   font-style: italic;
 }
 
-.Notification {
-
-  font-size: large;
-  color: green;
-  padding: 10px;
-  border-color: green;
-  background-color: darkgrey;
-  border-radius:3px;
-  border-style: solid ;
+body {
+  padding: 0;
+  margin: 0;
 }

@@ -1,9 +1,11 @@
 import React from 'react';
 
-const Button = ({Delete}) => {
+
+
+const Button = () => {
   return (
     
-    <button onClick={Delete}>
+    <button>
 
 Delete
     </button>

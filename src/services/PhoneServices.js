@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "/api/persons"
+const baseUrl = "http://salty-plateau-41961.herokuapp.com/api/persons"
 
 
 const getAll = () => {

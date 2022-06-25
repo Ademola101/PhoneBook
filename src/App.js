@@ -4,11 +4,11 @@ import Filter from "./components/Filter";
 import Form from "./components/Form";
 import Input from "./components/Input";
 import { AppStyle } from "./components/styles/App.styles";
-import { Formstyle } from "./components/styles/Form.styles";
 import Button from "./components/Button";
 import {useEffect} from "react"
 import PhoneServices from "./services/PhoneServices";
 import Notification from "./components/Notification";
+import { H2 } from "./components/styles/PhoneHeader";
 
 function App() {
 
@@ -57,7 +57,7 @@ if (currentName.length === 0) {
 number: ""})
   }).catch(error => {
     console.log(error)
-    setMessage(error.response.data.error)
+    setMessage("Invalid input, Please try again")
     setTimeout(() => {
       setMessage(null)
     }, 5000)
@@ -112,16 +112,19 @@ if (window.confirm(`Are you sure you want to delete ${phone.name}`) )
 
   return (<AppStyle> 
   
-  <h2>Phonebook</h2>
+  <H2>Phonebook</H2>
   <Notification message={message}/>
   <Filter onChange={inputOnchange}/>
 
 
-<Formstyle  as = {Form} onSubmit={addPerson}> 
-<div>  Name: <Input value={newName.name} type= "text" onChange={(e) => setNewName({...newName, name: e.target.value})}/></div>  
+<Form onSubmit={addPerson}> 
+<div>   <Input label= "Name" value={newName.name} type= "text"
+ onChange={(e) => setNewName({...newName, name: e.target.value})}/></div>  
 
-Number: <Input type= "number" value={newName.number}  onChange = {(e) => setNewName({...newName, number: e.target.value})}/>
-</Formstyle>
+<Input label= "Number" type= "number" value={newName.number} 
+ onChange = {(e) => setNewName({...newName, number: e.target.value})}/>
+ 
+</Form>
 
 <h2>Numbers</h2>
 
