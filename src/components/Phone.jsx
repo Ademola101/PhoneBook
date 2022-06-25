@@ -4,19 +4,23 @@ const Contaniner = styled.div`
   
   display: flex;
   
-  flex-direction: column;
+  flex-direction: row;
 `
 export default function Phone({person,children}) {
   return ( <Contaniner>
-    <div > Name:
+    Name:
 
+
+    <div>
 {person.name}
     </div>
-<div>
-Number:
-  {person.number}  
-</div>
-<div>{children}</div>
+
+    <div>
+{person.number}
+    </div>
+    <div>
+
+    </div>
     </Contaniner>
   )
 }

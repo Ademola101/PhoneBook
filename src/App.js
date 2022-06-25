@@ -108,6 +108,7 @@ if (window.confirm(`Are you sure you want to delete ${phone.name}`) )
 }
 };
 
+const Name = PersonToShow?.map(person => <div> {person.name}</div>)
 
 
   return (<AppStyle> 
@@ -128,11 +129,7 @@ if (window.confirm(`Are you sure you want to delete ${phone.name}`) )
 
 <h2>Numbers</h2>
 
-      {PersonToShow?.map((person) =>
-      <Phone key={person.id} person={person}> <Button Delete={() => Delete(person.id)}/> </Phone>
-
-      )}
-  
+   Name <br/>   {Name}
   
   </AppStyle>
   );
