@@ -110,7 +110,7 @@ if (window.confirm(`Are you sure you want to delete ${phone.name}`) )
 }
 };
 
-console.log(Person);
+
 
 
   return (<AppStyle> 
