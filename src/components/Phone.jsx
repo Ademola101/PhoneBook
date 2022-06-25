@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import Name from './Name';
 const Contaniner = styled.div`
   
   display: flex;
@@ -8,19 +9,8 @@ const Contaniner = styled.div`
 `
 export default function Phone({person,children}) {
   return ( <Contaniner>
-    Name:
-
-
-    <div>
-{person.name}
-    </div>
-
-    <div>
-{person.number}
-    </div>
-    <div>
-
-    </div>
+    
+    <Name person={person}/>
     </Contaniner>
   )
 }

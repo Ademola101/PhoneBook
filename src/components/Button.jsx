@@ -1,13 +1,13 @@
 import React from 'react';
+import styled from 'styled-components';
 
 
-
-const Button = () => {
+const Button = ({Delete, text}) => {
   return (
     
-    <button>
+    <button onClick={Delete}>
 
-Delete
+{text}
     </button>
     );
 }

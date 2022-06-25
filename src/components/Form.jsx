@@ -3,10 +3,12 @@ import styled from 'styled-components';
 const Formstyle = styled.form`
   
   h3 {
-    text-align: center 
+    text-align: center;
+    background-color: black;
+    color: green;
   }
 
-  button {
+  .button {
     padding: 10px;
     height: 30px;
     width: 50px;
@@ -25,7 +27,7 @@ const Formstyle = styled.form`
     justify-items: center;
     &&& {
       margin-right: 30px !important;
-    margin: auto !important;
+    
    
     }
   }
@@ -38,7 +40,7 @@ const Form = ({onSubmit, children}) => {
     <Formstyle onSubmit={onSubmit}>
     <h3>Add contact</h3>
      <div> {children} </div> 
-<button> Add </button>
+<button className='button'> Add</button>
       </Formstyle>  
     
   );

@@ -9,10 +9,12 @@ import {useEffect} from "react"
 import PhoneServices from "./services/PhoneServices";
 import Notification from "./components/Notification";
 import { H2 } from "./components/styles/PhoneHeader";
+import Name from "./components/Name";
+import PhoneNumber from "./components/PhoneNumber";
 
 function App() {
 
-  const [Person, setPerson] = useState(null);
+  const [Person, setPerson] = useState([]);
 
   const [newName, setNewName] = useState( {name: "", number:"", id: 0});
 
@@ -108,14 +110,14 @@ if (window.confirm(`Are you sure you want to delete ${phone.name}`) )
 }
 };
 
-const Name = PersonToShow?.map(person => <div> {person.name}</div>)
+console.log(Person);
 
 
   return (<AppStyle> 
   
   <H2>Phonebook</H2>
   <Notification message={message}/>
-  <Filter onChange={inputOnchange}/>
+  
 
 
 <Form onSubmit={addPerson}> 
@@ -128,9 +130,25 @@ const Name = PersonToShow?.map(person => <div> {person.name}</div>)
 </Form>
 
 <h2>Numbers</h2>
-
-   Name <br/>   {Name}
-  
+<Filter onChange={inputOnchange}/>
+{Person.length !== 0 ? <div className="phone">
+  <div>
+  <p>Name</p>
+      {PersonToShow?.map((person) =>
+      <Name key={person.id} person={person}> <Button Delete={() => Delete(person.id)}/> </Name>
+      
+      )}
+  </div>
+  <div>
+    <p> Number</p>
+    {PersonToShow?.map((person) =>
+      <PhoneNumber key={person.id} person={person}> <Button text= "delete" Delete={() => Delete(person.id)}/>  </PhoneNumber>
+      
+      )}
+ 
+  </div>
+  </div>
+ : (<div> No Name to show</div>)}
   </AppStyle>
   );
 }
