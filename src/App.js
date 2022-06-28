@@ -1,5 +1,4 @@
-import {useState} from "react"
-import Phone from "./components/Phone";
+import {useState, Suspense} from "react"
 import Filter from "./components/Filter";
 import Form from "./components/Form";
 import Input from "./components/Input";
@@ -130,12 +129,15 @@ if (window.confirm(`Are you sure you want to delete ${phone.name}`) )
 </Form>
 
 <h2>Numbers</h2>
-<Filter onChange={inputOnchange}/>
+<Filter onChange={inputOnchange}/> 
+
+
 {Person.length !== 0 ? <div className="phone">
+
   <div>
   <p>Name</p>
       {PersonToShow?.map((person) =>
-      <Name key={person.id} person={person}> <Button Delete={() => Delete(person.id)}/> </Name>
+      <Name key={person.id} person={person} /> 
       
       )}
   </div>
@@ -146,9 +148,10 @@ if (window.confirm(`Are you sure you want to delete ${phone.name}`) )
       
       )}
  
-  </div>
-  </div>
+  </div> 
+  </div> 
  : (<div> No Name to show</div>)}
+ 
   </AppStyle>
   );
 }
