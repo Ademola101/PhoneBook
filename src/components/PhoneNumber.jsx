@@ -9,6 +9,10 @@ padding: 7px;
 font-weight: bold;
 color: #485252;
 font-size: large;
+.button {
+  background-color: #485252;
+}
+
 
 @media (max-width: 468px) {
   width: 50vw;

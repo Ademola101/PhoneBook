@@ -4,8 +4,9 @@ const Formstyle = styled.form`
   
   h3 {
     text-align: center;
-    background-color: black;
+    background-color: darksalmon;
     color: green;
+    padding: 5px;
   }
 
   .button {
@@ -13,23 +14,19 @@ const Formstyle = styled.form`
     height: 30px;
     width: 50px;
     
-    background-color: #836565;
+    background-color: darkslategray;
     color: white;
     text-align: center;
     line-height: 1.2em;
     &:hover {
-      border-color: blue;
+      background-color: blue;
       border-radius: 3px;
     };
     border-color: white;
     text-align: center;
     align-items: center;
     justify-items: center;
-    &&& {
-      margin-right: 30px !important;
-    
-   
-    }
+    margin-left: 60px;
   }
 `
 

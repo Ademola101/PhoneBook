@@ -12,7 +12,7 @@ import Name from "./components/Name";
 import PhoneNumber from "./components/PhoneNumber";
 
 function App() {
-
+  const [loading, setLoading] =useState(false)
   const [Person, setPerson] = useState([]);
 
   const [newName, setNewName] = useState( {name: "", number:"", id: 0});
@@ -21,8 +21,10 @@ function App() {
   const [message, setMessage] = useState(null)
 
   useEffect( () => {
+    setLoading(true)
     PhoneServices.getAll().then((initialPerson) => {
       setPerson(initialPerson)
+      setLoading(false)
     })
   }, [])
 
@@ -132,11 +134,11 @@ if (window.confirm(`Are you sure you want to delete ${phone.name}`) )
 <Filter onChange={inputOnchange}/> 
 
 
-{Person.length !== 0 ? <div className="phone">
+{ loading ? (<>Loading....</>) : Person.length !== 0 ? (<div className="phone">
 
   <div>
   <p>Name</p>
-      {PersonToShow?.map((person) =>
+      {PersonToShow.map((person) =>
       <Name key={person.id} person={person} /> 
       
       )}
@@ -144,12 +146,12 @@ if (window.confirm(`Are you sure you want to delete ${phone.name}`) )
   <div>
     <p> Number</p>
     {PersonToShow?.map((person) =>
-      <PhoneNumber key={person.id} person={person}> <Button text= "delete" Delete={() => Delete(person.id)}/>  </PhoneNumber>
+      <PhoneNumber key={person.id} person={person}> <Button className = "button" text= "delete" Delete={() => Delete(person.id)}/>  </PhoneNumber>
       
       )}
  
   </div> 
-  </div> 
+  </div> )
  : (<div> No Name to show</div>)}
  
   </AppStyle>

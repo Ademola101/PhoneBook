@@ -21,7 +21,7 @@ height: 100vh;
 
 p {
   text-align: center;
-  background-color: black;
+  background-color: darksalmon;
   color: green;
   font-size: 1.5em;
   
@@ -29,6 +29,7 @@ p {
 
 h2 {
   margin-bottom: 20px;
+  
 }
 
 
